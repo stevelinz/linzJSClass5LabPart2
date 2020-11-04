@@ -21,9 +21,9 @@ function () {
         function updateTotal() {
             // STEP ONE: Books
             // Get the value of the "qtyBook" input and parse to a number
-            var qtyBookP = parseInt($('#qtyBook').text());
+            var qtyBookP = parseInt($('#qtyBook').val());
             // Get the text of the "priceBook" span and parse to a number
-             var priceBook = parseFloat($('span:first').val());  // do i need this?
+             var priceBook = parseFloat($('#priceBook').text());  // do i need this?
             // Calculate the book total
             var bookTotal = parseFloat(qtyBookP * priceBook);
             // Update the text of the "totalBook" span with the book total
@@ -37,10 +37,11 @@ function () {
             // Calculate the donation total
            var donation = parseFloat(qtyDonation * priceDonation);
             // Update the text of the "totalDonation" span with the book total
-           $("#totalBook").text (donation.toFixed(2));
-
+           $("#totalDonation").text (donation.toFixed(2));
+            var grand = parseFloat((qtyBookP * priceBook) + (qtyDonation * priceDonation));
             // STEP THREE: Grand Total
             // Add the book and donation totals to get the grand total
+            $("#grandTotal").text (grand.toFixed(2));
             // Update the text of the "grandTotal" span with the grand total
         }
     }
